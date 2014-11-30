@@ -1,0 +1,60 @@
+<form name='tagForm'
+      role="form">
+  <div class="form-group">
+    <label for="tagNameInput">Parameter name</label>
+    <input type="text"
+           ng-model='tag.name'
+           class="form-control"
+           id="tagNameInput"
+           required>
+  </div>
+
+  <div class="form-group">
+    <label for="input2011">2011</label>
+    <input type="number"
+           ng-model='tag.value2011'
+           class="form-control"
+           id="input2011"
+           required>
+  </div>
+
+  <div class="form-group">
+    <label for="input2012">2012</label>
+    <input type="number"
+           ng-model='tag.value2012'
+           class="form-control"
+           id="input2012"
+           required>
+  </div>
+
+  <div class="form-group">
+    <label for="input2013">2013</label>
+    <input type="number"
+           ng-model='tag.value2013'
+           class="form-control"
+           id="input2013"
+           required>
+  </div>
+
+  <div class="form-group">
+    <label for="input2014">2014</label>
+    <input type="number"
+           ng-model='tag.value2014'
+           class="form-control"
+           id="input2014"
+           required>
+  </div>
+
+  <div class="form-group">
+
+    <button type="submit"
+            ng-click='addTag()'
+            ng-disabled="tagForm.$invalid"
+            class="btn btn-default">Add tag
+    </button>
+    <button type="submit"
+            ng-click='removeTags()'
+            class="btn btn-default">Remove tags
+    </button>
+  </div>
+</form>

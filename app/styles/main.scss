@@ -1,0 +1,73 @@
+$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
+
+@import 'bootstrap-sass-official/vendor/assets/stylesheets/bootstrap';
+
+// bower:scss
+@import "../bower_components/bootstrap-sass-official/vendor/assets/stylesheets/bootstrap.scss";
+// endbower
+
+body {
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+/* Responsive: Portrait tablets and up */
+@media screen and (min-width: 768px) {
+  .container {
+    max-width: 730px;
+  }
+
+  /* Remove the padding we set earlier */
+  .header,
+  .marketing,
+  .footer {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  /* Space out the masthead */
+  .header {
+    margin-bottom: 30px;
+  }
+  /* Remove the bottom border on the jumbotron for visual effect */
+  .jumbotron {
+    border-bottom: 0;
+  }
+}
+
+.carousel-control {
+  &.left, &.right {
+    background-image: none;
+    @include reset-filter();
+  }
+}
+
+.yaxis line {
+  fill: none;
+  stroke: lightgray;
+  stroke-width: 1px;
+  shape-rendering: crispEdges;
+}
+
+.xaxis text,
+.yaxis text {
+  font-family: sans-serif;
+  font-size: 11px;
+}
+
+.line {
+  fill: none;
+  stroke: steelblue;
+  stroke-width: 2px;
+}
+
+.overlay {
+  fill: none;
+  pointer-events: all;
+}
+
+.value-indicator-text {
+  font-family: sans-serif;
+  font-size: 13px;
+  text-anchor: middle;
+  fill: orange;
+}

@@ -9,23 +9,18 @@ describe('chartDirective', function () {
   beforeEach(inject(function ($rootScope, $compile) {
     rootScope = $rootScope;
     compileDirective($compile);
-    chart = jasmine.createSpyObj('chart', ['addTag', 'removeTags']);
+    chart = jasmine.createSpyObj('chart', ['render']);
     scope.chart = chart;
   }));
 
-  it('adds tag', function () {
-    var tag = givenTag();
-    rootScope.$broadcast('ADD_TAG', tag);
-    expect(scope.chart.addTag).toHaveBeenCalledWith(tag);
+  it('renders tags', function () {
+    var tags = givenTags();
+    rootScope.$broadcast('UPDATE_TAGS', tags);
+    expect(scope.chart.render).toHaveBeenCalledWith(tags);
   });
 
-  it('removes all tags', function () {
-    rootScope.$broadcast('REMOVE_TAGS');
-    expect(scope.chart.removeTags).toHaveBeenCalled();
-  });
-
-  function givenTag() {
-    return {name: 'tag1', values: []};
+  function givenTags() {
+    return [{name: 'tag1', values: []}];
   }
 
   function compileDirective($compile) {

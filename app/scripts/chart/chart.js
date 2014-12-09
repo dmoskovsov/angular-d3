@@ -5,7 +5,6 @@ function Chart(element, canvasWidth, canvasHeight) {
   var width = canvasWidth - margin - margin;
   var height = canvasHeight - margin - margin;
   var svg;
-  var tags = [];
   var xScale = d3.time.scale()
     .range([0, canvasWidth])
     .domain([new Date('2011-01-01T00:00:00Z'), new Date('2014-01-01T00:00:00Z')]);
@@ -14,22 +13,12 @@ function Chart(element, canvasWidth, canvasHeight) {
     .range([height, 0])
     .domain([0, 100]);
 
-  self.addTag = function (tag) {
-    tags.push(tag);
-    render();
-  };
-
-  self.removeTags = function () {
-    tags = [];
-    render();
-  };
-
-  function render() {
+  self.render = function (tags) {
     var groups = svg.selectAll('.tag').data(tags);
     var group = enterGroup(groups);
     updateLines(group);
     groups.exit().remove();
-  }
+  };
 
   function enterGroup(groups) {
     return groups.enter()
@@ -73,12 +62,6 @@ function Chart(element, canvasWidth, canvasHeight) {
   }
 
   function createXAxis() {
-    var yAxis = d3.svg.axis()
-      .scale(yScale)
-      .ticks(4)
-      .tickSize(-canvasWidth, 0, 0)
-      .orient('left');
-
     var xAxis = d3.svg.axis()
       .scale(xScale)
       .ticks(4)
@@ -89,6 +72,14 @@ function Chart(element, canvasWidth, canvasHeight) {
       .attr('class', 'xaxis')
       .attr('transform', 'translate(0,' + height + ')')
       .call(xAxis);
+  }
+
+  function createYAxis() {
+    var yAxis = d3.svg.axis()
+      .scale(yScale)
+      .ticks(4)
+      .tickSize(-canvasWidth, 0, 0)
+      .orient('left');
 
     svg.append('g')
       .attr('class', 'yaxis')
@@ -96,5 +87,6 @@ function Chart(element, canvasWidth, canvasHeight) {
   }
 
   createSvg();
-  createXAxis();
+  createXAxis();//todo dmoskovtsov tests
+  createYAxis();
 }

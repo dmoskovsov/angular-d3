@@ -1,6 +1,7 @@
 'use strict';
-function Tag(name, value2011, value2012, value2013, value2014) {
+function Tag(id, name, value2011, value2012, value2013, value2014) {
   var self = this;
+  self.id = id;
   self.name = name;
   self.value2011 = value2011;
   self.value2012 = value2012;

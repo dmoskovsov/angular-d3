@@ -5,17 +5,12 @@ angular.module('chart').directive('chart', function () {
     var chartHeight = 500;
     var chartWidth = 500;
 
-    function onAddTag(event, tag) {
-      scope.chart.addTag(tag);
-    }
-
-    function onRemoveTags() {
-      scope.chart.removeTags();
+    function onUpdateTags(event, tags) {
+      scope.chart.render(tags);
     }
 
     scope.chart = new Chart(element[0], chartWidth, chartHeight);
-    scope.$on('ADD_TAG', onAddTag);
-    scope.$on('REMOVE_TAGS', onRemoveTags);
+    scope.$on('UPDATE_TAGS', onUpdateTags);
   }
 
   return {

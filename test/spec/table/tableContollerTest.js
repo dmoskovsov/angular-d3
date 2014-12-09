@@ -12,6 +12,7 @@ describe('tableController', function () {
 
   it('creates default tag', function () {
     expect(scope.tag.name).toBe('Company revenue');
+    expect(scope.tag.id).toBe(1);
     expect(scope.tag.value2011).toBe(7);
     expect(scope.tag.value2012).toBe(18);
     expect(scope.tag.value2013).toBe(45);
@@ -23,10 +24,16 @@ describe('tableController', function () {
     scope.tag = tag;
     scope.addTag();
     expect(tagService.addTag).toHaveBeenCalledWith(tag);
-    expect(scope.tag).toEqual(new Tag('', 0, 0, 0, 0));
+    expect(scope.tag).toEqual(new Tag(1, '', 0, 0, 0, 0));
   });
 
-  it('removes tags', function () {
+  it('removes tag', function () {
+    var tagId = 3;
+    scope.removeTag(tagId);
+    expect(tagService.removeTag).toHaveBeenCalledWith(tagId);
+  });
+
+  it('removes all tags', function () {
     scope.removeTags();
     expect(tagService.removeTags).toHaveBeenCalled();
   });
@@ -36,7 +43,7 @@ describe('tableController', function () {
   }
 
   function mockTagService() {
-    tagService = jasmine.createSpyObj('tagService', ['addTag', 'removeTags']);
+    tagService = jasmine.createSpyObj('tagService', ['addTag', 'removeTag', 'removeTags']);
   }
 
   function createController($controller) {

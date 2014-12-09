@@ -4,7 +4,8 @@ angular.module('app', [
   'ngRoute',
   'ui.bootstrap',
   'chart',
-  'table'
+  'table',
+  '_'
 ]).config(function ($routeProvider) {
   $routeProvider
     .when('/', {

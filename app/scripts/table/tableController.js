@@ -5,7 +5,11 @@ angular.module('table', []).controller('tableController', function ($scope, tagS
 
   $scope.addTag = function () {
     tagService.addTag($scope.tag);
-    $scope.tag = new Tag('', 0, 0, 0, 0);
+    $scope.tag = new Tag(1, '', 0, 0, 0, 0);
+  };
+
+  $scope.removeTag = function (id) {
+    tagService.removeTag(id);
   };
 
   $scope.removeTags = function () {
@@ -13,6 +17,6 @@ angular.module('table', []).controller('tableController', function ($scope, tagS
   };
 
   function initTagWithDefaultValues() {
-    return new Tag('Company revenue', 7, 18, 45, 83);
+    return new Tag(1, 'Company revenue', 7, 18, 45, 83);
   }
 });

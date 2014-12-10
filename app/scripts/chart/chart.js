@@ -2,8 +2,8 @@
 function Chart(element, canvasWidth, canvasHeight) {
   var self = this;
   var margin = 20;
-  var width = canvasWidth - margin - margin;
-  var height = canvasHeight - margin - margin;
+  var width = canvasWidth - 2 * margin;
+  var height = canvasHeight - 2 * margin;
   var svg;
   var xScale = d3.time.scale()
     .range([0, canvasWidth])

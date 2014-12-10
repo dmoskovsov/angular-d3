@@ -8,6 +8,7 @@ module.exports = function (config) {
       'app/bower_components/angular-route/angular-route.js',
       'app/bower_components/angular-bootstrap/ui-bootstrap-tpls.js',
       'app/bower_components/d3/d3.js',
+      'app/bower_components/lodash/dist/lodash.min.js',
       'app/scripts/*.js',
       'app/scripts/**/**/*.js',
       'test/spec/**/*.js',

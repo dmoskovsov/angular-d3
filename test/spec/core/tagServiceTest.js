@@ -12,16 +12,16 @@ describe('tagService', function () {
   it('add adapted tags', function () {
     spyOn(rootScope, '$broadcast');
     tagService.addTag(givenTag(1));
-    var tag = givenAdaptedTag();
+    var tag = givenAdaptedTag(1);
     expect(rootScope.$broadcast).toHaveBeenCalledWith('UPDATE_TAGS', [tag]);
     expect(tagService.tags).toEqual([tag]);
   });
 
   it('removes tag', function () {
     spyOn(rootScope, '$broadcast');
-    tagService.tags = [givenTag(1), givenTag(2)];
+    tagService.tags = [givenAdaptedTag(1), givenAdaptedTag(2)];
     tagService.removeTag(1);
-    expect(rootScope.$broadcast).toHaveBeenCalledWith('UPDATE_TAGS', [givenAdaptedTag()]);
+    expect(rootScope.$broadcast).toHaveBeenCalledWith('UPDATE_TAGS', [givenAdaptedTag(2)]);
     expect(tagService.tags.length).toBe(1);
     expect(tagService.tags[0].id).toBe(2);
   });
@@ -34,8 +34,8 @@ describe('tagService', function () {
     expect(tagService.tags).toEqual([]);
   });
 
-  function givenAdaptedTag() {
-    var tag = givenTag(1);
+  function givenAdaptedTag(id) {
+    var tag = givenTag(id);
     tag.values = [{value: 7, ts: new Date('2011-01-01T00:00:00Z')},
       {value: 18, ts: new Date('2012-01-01T00:00:00Z')},
       {value: 45, ts: new Date('2013-01-01T00:00:00Z')},
